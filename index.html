@@ -24,10 +24,16 @@
   </a>
   <div class="header-right">
     <a href="tel:[ΤΗΛΕΦΩΝΟ]" class="header-phone">[ΤΗΛΕΦΩΝΟ]</a>
-    <div class="lang" role="group" aria-label="Γλώσσα / Language">
-      <button type="button" class="lang-link" data-lang="el" lang="el"><img src="flag-gr.svg" width="24" height="16" alt="">ΕΛ</button>
-      <button type="button" class="lang-link" data-lang="en" lang="en"><img src="flag-gb.svg" width="24" height="16" alt="">EN</button>
-    </div>
+    <details class="lang">
+      <summary class="lang-current" aria-label="Γλώσσα / Language">
+        <img id="langFlag" src="flag-gr.svg" width="20" height="14" alt="">
+        <span id="langCode">ΕΛ</span>
+      </summary>
+      <div class="lang-menu">
+        <button type="button" class="lang-option" data-lang="el" data-flag="flag-gr.svg" data-code="ΕΛ" lang="el"><img src="flag-gr.svg" width="20" height="14" alt="">Ελληνικά</button>
+        <button type="button" class="lang-option" data-lang="en" data-flag="flag-gb.svg" data-code="EN" lang="en"><img src="flag-gb.svg" width="20" height="14" alt="">English</button>
+      </div>
+    </details>
   </div>
 </header>
 
@@ -423,7 +429,10 @@ const EN = {
   nodes.forEach(n => { n.dataset.el = n.innerHTML; });   // κρατάμε τα ελληνικά
   const titleEl = document.title;
   const titleEn = 'itfits.gr — Websites for businesses in Chania';
-  const buttons = document.querySelectorAll('.lang-link');
+  const options = document.querySelectorAll('.lang-option');
+  const picker = document.querySelector('.lang');
+  const flag = document.getElementById('langFlag');
+  const code = document.getElementById('langCode');
 
   function setLang(lang) {
     nodes.forEach(n => {
@@ -432,15 +441,21 @@ const EN = {
     });
     document.documentElement.lang = lang;
     document.title = lang === 'en' ? titleEn : titleEl;
-    buttons.forEach(b => {
+    options.forEach(b => {
       const on = b.dataset.lang === lang;
       b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) { flag.src = b.dataset.flag; code.textContent = b.dataset.code; }
     });
+    picker.open = false;
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
-  buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  options.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+  // Κλείνει το μενού αν πατήσεις οπουδήποτε αλλού
+  document.addEventListener('click', e => {
+    if (!picker.contains(e.target)) picker.open = false;
+  });
 
   // Πρώτη φορά: αν το κινητό/browser δεν είναι στα ελληνικά, ανοίγει στα αγγλικά
   let saved = null;
