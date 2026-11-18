@@ -1,0 +1,325 @@
+/* ===== itfits.gr ===== */
+:root {
+  --bg: #0B0F1A;
+  --bg-alt: #0E1424;
+  --surface: #111A2E;
+  --line: #1A2438;
+  --line-2: #2B3A57;
+  --border: #22304A;
+  --text: #F3F6FB;
+  --muted: #B7BFCE;
+  --muted-2: #8A93A6;
+  --accent: #2DE2E6;   /* κυανό — άλλαξέ το εδώ για όλο το site */
+  --violet: #A78BFA;
+  --max: 1160px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Commissioner, Inter, system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+a:hover { opacity: 0.8; }
+img, svg { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 { margin: 0; }
+p { margin: 0; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.accent { color: var(--accent); }
+.muted { color: var(--muted); }
+.muted-2 { color: var(--muted-2); }
+
+/* ----- Header ----- */
+.site-header {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.header-phone {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ----- Hero ----- */
+.hero {
+  padding-top: 48px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
+}
+.hero-text {
+  flex: 1 1 500px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+.lead {
+  max-width: 31rem;
+  font-size: 20px;
+  color: var(--muted);
+}
+.hero-art {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+.hero-art svg { width: 520px; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+}
+.link {
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+/* ----- Band ----- */
+.band {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.band-inner {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 28px;
+}
+.band strong { font-weight: 600; }
+
+/* ----- Sections ----- */
+.section {
+  padding: 88px 0;
+}
+.section + .section { border-top: 1px solid var(--line); }
+.alt { background: var(--bg-alt); }
+
+.section h2 {
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 36px;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px 80px;
+}
+.split-side {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.split-side p { max-width: 22rem; }
+
+/* ----- Steps (γραμμή κυκλώματος) ----- */
+.steps {
+  flex: 2 1 480px;
+  min-width: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 44px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.steps::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--violet);
+}
+.steps li { position: relative; }
+.steps li::before {
+  content: "";
+  position: absolute;
+  left: -41px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 4px solid var(--bg);
+}
+.steps h3 { font-weight: 600; font-size: 21px; }
+.steps p { color: var(--muted); margin-top: 4px; }
+
+/* ----- Cards / Τιμές ----- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.card {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 28px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card.featured { border: 2px solid var(--accent); }
+.card h3 { font-size: 19px; font-weight: 600; }
+.card p { color: var(--muted); }
+.card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.badge {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+}
+.price {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.per {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+/* ----- FAQ ----- */
+.faq {
+  flex: 2 1 480px;
+  min-width: 0;
+}
+.faq-item {
+  padding: 22px 0;
+  border-top: 1px solid var(--line-2);
+}
+.faq-item:last-child { border-bottom: 1px solid var(--line-2); }
+.faq-item h3 { font-weight: 600; font-size: 20px; }
+.faq-item p { color: var(--muted); margin-top: 6px; }
+
+/* ----- Contact ----- */
+.contact { padding: 96px 0; }
+.contact .container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.contact-title {
+  font-size: clamp(2.4rem, 5vw, 4rem) !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.05 !important;
+}
+.big-phone {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+/* ----- Footer ----- */
+.site-footer { border-top: 1px solid var(--line); }
+.footer-inner {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted-2);
+}
+
+/* ----- Κινητό ----- */
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .hero { padding-top: 24px; padding-bottom: 56px; gap: 40px; }
+  .section { padding: 64px 0; }
+  .contact { padding: 72px 0; }
+}
