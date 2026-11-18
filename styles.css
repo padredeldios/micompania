@@ -379,3 +379,25 @@ p { margin: 0; }
 .more[open] summary::after { transform: rotate(-135deg); }
 .more .features { margin-top: 8px; }
 .more .per { display: block; margin-top: 12px; }
+/* ----- Δύο επιλογές μέσα σε κουτάκι ----- */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+.option {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.option strong { font-weight: 600; }
+.option span { color: var(--muted); font-size: 16px; }
+.option .option-price {
+  color: var(--accent);
+  font-weight: 600;
+}
