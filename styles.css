@@ -347,3 +347,35 @@ p { margin: 0; }
   border-radius: 50%;
   background: var(--accent);
 }
+/* ----- Ανοιγόμενο "Τι περιλαμβάνει" ----- */
+.cards { align-items: flex-start; }
+
+.more {
+  margin-top: 4px;
+  border-top: 1px solid var(--line-2);
+  padding-top: 12px;
+}
+.more summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg);
+  margin-right: 4px;
+  transition: transform 0.2s;
+}
+.more[open] summary::after { transform: rotate(-135deg); }
+.more .features { margin-top: 8px; }
+.more .per { display: block; margin-top: 12px; }
