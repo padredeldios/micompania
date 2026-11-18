@@ -401,3 +401,97 @@ p { margin: 0; }
   color: var(--accent);
   font-weight: 600;
 }
+/* ----- Κουτάκια σε grid ----- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  align-items: start;
+  gap: 18px;
+}
+/* ----- Σε ποιους απευθυνόμαστε ----- */
+.sectors {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
+.sectors-title {
+  grid-column: 1 / -1;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+.sector {
+  padding-top: 18px;
+  border-top: 2px solid var(--accent);
+}
+.sector h3 { font-size: 20px; font-weight: 600; }
+.sector p { color: var(--muted); margin-top: 6px; }
+
+/* ----- Επικοινωνία με φόρμα ----- */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+.contact-info {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-form {
+  flex: 1 1 420px;
+  min-width: 0;
+  padding: 28px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.field label {
+  font-size: 14px;
+  color: var(--muted);
+}
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.field textarea { resize: vertical; }
+.contact-form .btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  align-self: flex-start;
+}
+.hp { display: none; }
